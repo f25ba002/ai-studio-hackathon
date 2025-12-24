@@ -56,7 +56,7 @@ async function loadSpotDetails() {
             // 平均評価を表示
             const fullStars = Math.floor(spot.avg_rating);
             const hasHalfStar = spot.avg_rating % 1 >= 0.5;
-            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0).toFixed(1);
             const starsHtml = '★'.repeat(fullStars) + (hasHalfStar ? '☆' : '') + '☆'.repeat(emptyStars);
             // バグ: toFixed(1)がないので小数点が多く表示される
             const ratingText = spot.review_count > 0 ? `${starsHtml} ${spot.avg_rating} (${spot.review_count}件のレビュー)` : '評価なし';
