@@ -54,8 +54,8 @@ async function loadSpotDetails() {
             document.title = `${spot.spot_name} - 群馬県観光ポータル`;
 
             // 平均評価を表示
-            const fullStars = Math.floor(spot.avg_rating);
-            const hasHalfStar = spot.avg_rating % 1 >= 0.5;
+            const fullStars = Math.floor(spot.avg_rating).toFixed(1);
+            const hasHalfStar = spot.avg_rating % 1 >= 0.5.toFixed(1);
             const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0).toFixed(1);
             const starsHtml = '★'.repeat(fullStars) + (hasHalfStar ? '☆' : '') + '☆'.repeat(emptyStars);
             // バグ: toFixed(1)がないので小数点が多く表示される
